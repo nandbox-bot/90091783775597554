@@ -31,7 +31,7 @@ public class ExtensionCustomLogic extends CallbackAdapter {
 
     public static void main(String[] args) throws Exception {
         String TOKEN = "";
-        Properties properties = new Properties();
+	Properties properties = new Properties();
         try {
             FileInputStream input = new FileInputStream("token.properties");
             try {
@@ -79,14 +79,14 @@ public class ExtensionCustomLogic extends CallbackAdapter {
         }
 
         if (equalsAnyIgnoreCase(trimmed, "/start", "start", "help", "/help")) {
-            sendText(chatId, "Your weather guide\n\nUse: /weather [city]\nExample: /weather London", reference, userId, chatSettings, appId);
+            sendText(chatId, "Your weather guide\n\nUse: /getweather [city]\nExample: /getweather London", reference, userId, chatSettings, appId);
             return;
         }
 
-        if (startsWithCommand(trimmed, "/weather") || startsWithCommand(trimmed, "weather")) {
+        if (startsWithCommand(trimmed, "/getweather") || startsWithCommand(trimmed, "getweather")) {
             String city = extractCommandArgument(trimmed);
             if (city == null || city.trim().length() == 0) {
-                sendText(chatId, "Please provide a city.\nExample: /weather London", reference, userId, chatSettings, appId);
+                sendText(chatId, "Please provide a city.\nExample: /getweather London", reference, userId, chatSettings, appId);
                 return;
             }
 
@@ -109,7 +109,7 @@ public class ExtensionCustomLogic extends CallbackAdapter {
             return;
         }
 
-        sendText(chatId, "I can fetch current weather. Use: /weather [city]", reference, userId, chatSettings, appId);
+        sendText(chatId, "I can fetch current weather. Use: /getweather [city]", reference, userId, chatSettings, appId);
     }
 
     @Override
@@ -384,8 +384,8 @@ public class ExtensionCustomLogic extends CallbackAdapter {
         if (r.description != null && r.description.length() > 0) {
             sb.append("- Condition: ").append(capitalize(r.description)).append("\n");
         }
-        sb.append("- Temperature: ").append(trimDouble(r.tempC)).append("°C");
-        sb.append(" (feels like ").append(trimDouble(r.feelsLikeC)).append("°C)\n");
+        sb.append("- Temperature: ").append(trimDouble(r.tempC)).append("\u00b0C");
+        sb.append(" (feels like ").append(trimDouble(r.feelsLikeC)).append("\u00b0C)\n");
         sb.append("- Humidity: ").append(r.humidity).append("%\n");
         sb.append("- Wind: ").append(trimDouble(r.windSpeed)).append(" m/s");
         return sb.toString();
