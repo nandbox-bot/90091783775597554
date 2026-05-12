@@ -79,7 +79,7 @@ public class ExtensionCustomLogic extends CallbackAdapter {
         }
 
         if (equalsAnyIgnoreCase(trimmed, "/start", "start", "help", "/help")) {
-            sendText(chatId, "Your weatherssssssssss guide\n\nUse: /getweather [city]\nExample: /getweather London", reference, userId, chatSettings, appId);
+            sendText(chatId, "Your weathersss guide\n\nUse: /getweather [city]\nExample: /getweather London", reference, userId, chatSettings, appId);
             return;
         }
 
