@@ -37,7 +37,7 @@ public class ExtensionCustomLogic extends CallbackAdapter {
             try {
                 properties.load(input);
                 TOKEN = properties.getProperty("Token");
-                System.out.println("Token123456: " + TOKEN);
+                System.out.println("Token123456789: " + TOKEN);
             } finally {
                 input.close();
             }
